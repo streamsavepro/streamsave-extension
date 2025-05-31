@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "StreamSave Pro",
+  "version": "2.0",
+  "description": "Download videos and block ads with StreamSave Pro",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "assets/logo.png",
+      "48": "assets/logo.png",
+      "128": "assets/logo.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "downloads",
+    "declarativeNetRequest",
+    "activeTab",
+    "tabs",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "*://*/*",
+    "https://*.youtube.com/*",
+    "https://*.googlevideo.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "adblock_ruleset",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  }
+}
