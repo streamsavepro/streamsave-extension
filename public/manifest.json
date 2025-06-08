@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "StreamSave Pro",
+  "version": "8.0",
+  "description": "The Final, Polished, Premium Video Downloader.",
+  "action": {
+    "default_title": "StreamSave Pro",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "24": "assets/icon24.png",
+      "32": "assets/icon32.png"
+    }
+  },
+ "permissions": [
+    "storage",
+    "downloads",
+    "tabs",
+    "webRequest",
+    "webNavigation",
+    "declarativeNetRequest",
+    "downloads.shelf" 
+  ],
+  "host_permissions": [ "*://*/*" ],
+  "background": { "service_worker": "background.js" },
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "adblock_ruleset",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  }
+}
